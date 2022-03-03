@@ -1,0 +1,3800 @@
+{
+	"$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+	"version": "2.1.0",
+	"runs": [
+		{
+			"tool": {
+				"driver": {
+					"name": "KICS",
+					"version": "snapshot-875ef387",
+					"fullName": "Keeping Infrastructure as Code Secure",
+					"informationUri": "https://www.kics.io/",
+					"rules": [
+						{
+							"id": "3ddfa124-6407-4845-a501-179f90c65097",
+							"name": "Authentication Without MFA",
+							"shortDescription": {
+								"text": "Authentication Without MFA"
+							},
+							"fullDescription": {
+								"text": "Users should authenticate with MFA (Multi-factor Authentication)"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_policy",
+							"help": {
+								"text": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_user_policy"
+							},
+							"properties": {
+								"precision": "very-high",
+								"security-severity": 9.0
+							},
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT007",
+										"index": 1,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "22fbfeac-7b5a-421a-8a27-7a2178bb910b",
+							"name": "CMK Rotation Disabled",
+							"shortDescription": {
+								"text": "CMK Rotation Disabled"
+							},
+							"fullDescription": {
+								"text": "Customer Master Keys (CMK) must have rotation enabled, which means the attribute 'enable_key_rotation' must be set to 'true' when the key is enabled."
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_key#enable_key_rotation",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT010",
+										"index": 5,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "35113e6f-2c6b-414d-beec-7a9482d3b2d1",
+							"name": "DB Instance Publicly Accessible",
+							"shortDescription": {
+								"text": "DB Instance Publicly Accessible"
+							},
+							"fullDescription": {
+								"text": "The field 'publicly_accessible' should not be set to 'true' (default is 'false')."
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/db_instance#publicly_accessible",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT007",
+										"index": 1,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "08bd0760-8752-44e1-9779-7bb369b2b4e4",
+							"name": "DB Instance Storage Not Encrypted",
+							"shortDescription": {
+								"text": "DB Instance Storage Not Encrypted"
+							},
+							"fullDescription": {
+								"text": "The parameter storage_encrypted in aws_db_instance must be set to 'true' (the default is 'false')."
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/db_instance#storage_encrypted",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT006",
+										"index": 11,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "e6b4b943-6883-47a9-9739-7ada9568f8ca",
+							"name": "EBS Volume Snapshot Not Encrypted",
+							"shortDescription": {
+								"text": "EBS Volume Snapshot Not Encrypted"
+							},
+							"fullDescription": {
+								"text": "The value on AWS EBS Volume Snapshot Encryptation must be true"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ebs_snapshot#encrypted",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT006",
+										"index": 11,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "5a2486aa-facf-477d-a5c1-b010789459ce",
+							"name": "EC2 Instance Has Public IP",
+							"shortDescription": {
+								"text": "EC2 Instance Has Public IP"
+							},
+							"fullDescription": {
+								"text": "EC2 Instance should not have a public IP address."
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance#associate_public_ip_address",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT009",
+										"index": 6,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "63ebcb19-2739-4d3f-aa5c-e8bbb9b85281",
+							"name": "EKS Cluster Encryption Disabled",
+							"shortDescription": {
+								"text": "EKS Cluster Encryption Disabled"
+							},
+							"fullDescription": {
+								"text": "EKS Cluster should be encrypted"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eks_cluster#encryption_config",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT006",
+										"index": 11,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "ffac8a12-322e-42c1-b9b9-81ff85c39ef7",
+							"name": "HTTP Port Open",
+							"shortDescription": {
+								"text": "HTTP Port Open"
+							},
+							"fullDescription": {
+								"text": "The HTTP port is open in a Security Group"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT009",
+										"index": 6,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "88fd05e0-ac0e-43d2-ba6d-fc0ba60ae1a6",
+							"name": "IAM Database Auth Not Enabled",
+							"shortDescription": {
+								"text": "IAM Database Auth Not Enabled"
+							},
+							"fullDescription": {
+								"text": "IAM Database Auth Enabled must be configured to true"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/db_instance#iam_database_authentication_enabled",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT006",
+										"index": 11,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "fd54f200-402c-4333-a5a4-36ef6709af2f",
+							"name": "Missing User Instruction",
+							"shortDescription": {
+								"text": "Missing User Instruction"
+							},
+							"fullDescription": {
+								"text": "A user should be specified in the dockerfile, otherwise the image will run as root"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://docs.docker.com/engine/reference/builder/#user",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT005",
+										"index": 10,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "76c0bcde-903d-456e-ac13-e58c34987852",
+							"name": "Passwords And Secrets - AWS Access Key",
+							"shortDescription": {
+								"text": "Passwords And Secrets - AWS Access Key"
+							},
+							"fullDescription": {
+								"text": "Query to find passwords and secrets in infrastructure code."
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://kics.io/",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT012",
+										"index": 8,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "83ab47ff-381d-48cd-bac5-fb32222f54af",
+							"name": "Passwords And Secrets - AWS Secret Key",
+							"shortDescription": {
+								"text": "Passwords And Secrets - AWS Secret Key"
+							},
+							"fullDescription": {
+								"text": "Query to find passwords and secrets in infrastructure code."
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://kics.io/",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT012",
+										"index": 8,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "3e2d3b2f-c22a-4df1-9cc6-a7a0aebb0c99",
+							"name": "Passwords And Secrets - Generic Secret",
+							"shortDescription": {
+								"text": "Passwords And Secrets - Generic Secret"
+							},
+							"fullDescription": {
+								"text": "Query to find passwords and secrets in infrastructure code."
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://kics.io/",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT012",
+										"index": 8,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "38c5ee0d-7f22-4260-ab72-5073048df100",
+							"name": "S3 Bucket ACL Allows Read Or Write to All Users",
+							"shortDescription": {
+								"text": "S3 Bucket ACL Allows Read Or Write to All Users"
+							},
+							"fullDescription": {
+								"text": "S3 bucket with public READ/WRITE access"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT001",
+										"index": 3,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "5fb49a69-8d46-4495-a2f8-9c8c622b2b6e",
+							"name": "S3 Bucket Object Not Encrypted",
+							"shortDescription": {
+								"text": "S3 Bucket Object Not Encrypted"
+							},
+							"fullDescription": {
+								"text": "S3 Bucket Object should have server-side encryption enabled"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_object#server_side_encryption",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT006",
+										"index": 11,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "6726dcc0-5ff5-459d-b473-a780bef7665c",
+							"name": "S3 Bucket SSE Disabled",
+							"shortDescription": {
+								"text": "S3 Bucket SSE Disabled"
+							},
+							"fullDescription": {
+								"text": "If algorithm is AES256 then the master key is null, empty or undefined, otherwise the master key is required"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket#server_side_encryption_configuration",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT006",
+										"index": 11,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "c5b31ab9-0f26-4a49-b8aa-4cc064392f4d",
+							"name": "S3 Bucket Without Enabled MFA Delete",
+							"shortDescription": {
+								"text": "S3 Bucket Without Enabled MFA Delete"
+							},
+							"fullDescription": {
+								"text": "S3 bucket without MFA Delete Enabled. MFA delete cannot be enabled through Terraform, it can be done by adding a MFA device (https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable.html) and enabling versioning and MFA delete by using AWS CLI: 'aws s3api put-bucket-versioning --versioning-configuration=Status=Enabled,MFADelete=Enabled --bucket=\u003cBUCKET_NAME\u003e --mfa=\u003cMFA_SERIAL_NUMBER\u003e'. Please, also notice that MFA delete can not be used with lifecycle configurations"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket#mfa_delete",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT007",
+										"index": 1,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "65905cec-d691-4320-b320-2000436cb696",
+							"name": "Security Group With Unrestricted Access To SSH",
+							"shortDescription": {
+								"text": "Security Group With Unrestricted Access To SSH"
+							},
+							"fullDescription": {
+								"text": "'SSH' (TCP:22) should not be public in AWS Security Group"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT009",
+										"index": 6,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "590d878b-abdc-428f-895a-e2b68a0e1998",
+							"name": "Unknown Port Exposed To Internet",
+							"shortDescription": {
+								"text": "Unknown Port Exposed To Internet"
+							},
+							"fullDescription": {
+								"text": "AWS Security Group should not have an unknown port exposed to the entire Internet"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT009",
+										"index": 6,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "4728cd65-a20c-49da-8b31-9c08b423e4db",
+							"name": "Unrestricted Security Group Ingress",
+							"shortDescription": {
+								"text": "Unrestricted Security Group Ingress"
+							},
+							"fullDescription": {
+								"text": "Security groups allow ingress from 0.0.0.0:0"
+							},
+							"defaultConfiguration": {
+								"level": "error"
+							},
+							"helpUri": "https://www.terraform.io/docs/providers/aws/r/security_group.html",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT009",
+										"index": 6,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "cc997676-481b-4e93-aa81-d19f8c5e9b12",
+							"name": "EBS Volume Encryption Disabled",
+							"shortDescription": {
+								"text": "EBS Volume Encryption Disabled"
+							},
+							"fullDescription": {
+								"text": "The value on AWS EBS Volume Cluster Encryption must be true"
+							},
+							"defaultConfiguration": {
+								"level": "warning"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ebs_volume#encrypted",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT006",
+										"index": 11,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "d1846b12-20c5-4d45-8798-fc35b79268eb",
+							"name": "ECR Image Tag Not Immutable",
+							"shortDescription": {
+								"text": "ECR Image Tag Not Immutable"
+							},
+							"fullDescription": {
+								"text": "ECR should have an image tag be immutable"
+							},
+							"defaultConfiguration": {
+								"level": "warning"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_repository",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT007",
+										"index": 1,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "0e32d561-4b5a-4664-a6e3-a3fa85649157",
+							"name": "ECR Repository Not Encrypted",
+							"shortDescription": {
+								"text": "ECR Repository Not Encrypted"
+							},
+							"fullDescription": {
+								"text": "ECR (Elastic Container Registry) Repository encryption should be set"
+							},
+							"defaultConfiguration": {
+								"level": "warning"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_repository#encryption_configuration",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT006",
+										"index": 11,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "24e16922-4330-4e9d-be8a-caa90299466a",
+							"name": "ElasticSearch Not Encrypted At Rest",
+							"shortDescription": {
+								"text": "ElasticSearch Not Encrypted At Rest"
+							},
+							"fullDescription": {
+								"text": "Check if ElasticSearch encryption is disabled at Rest"
+							},
+							"defaultConfiguration": {
+								"level": "warning"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elasticsearch_domain",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT006",
+										"index": 11,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "967eb3e6-26fc-497d-8895-6428beb6e8e2",
+							"name": "Elasticsearch Domain Not Encrypted Node To Node",
+							"shortDescription": {
+								"text": "Elasticsearch Domain Not Encrypted Node To Node"
+							},
+							"fullDescription": {
+								"text": "Elasticsearch Domain encryption should be enabled node to node"
+							},
+							"defaultConfiguration": {
+								"level": "warning"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elasticsearch_domain#node_to_node_encryption",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT006",
+										"index": 11,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "acb6b4e2-a086-4f35-aefd-4db6ea51ada2",
+							"name": "Elasticsearch Log is disabled",
+							"shortDescription": {
+								"text": "Elasticsearch Log is disabled"
+							},
+							"fullDescription": {
+								"text": "AWS Elasticsearch should have logs enabled"
+							},
+							"defaultConfiguration": {
+								"level": "warning"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elasticsearch_domain#log_publishing_options",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT010",
+										"index": 5,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "e592a0c5-5bdb-414c-9066-5dba7cdea370",
+							"name": "IAM Access Analyzer Undefined",
+							"shortDescription": {
+								"text": "IAM Access Analyzer Undefined"
+							},
+							"fullDescription": {
+								"text": "IAM Access Analyzer should be defined to identify unintentional access"
+							},
+							"defaultConfiguration": {
+								"level": "warning"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/accessanalyzer_analyzer",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT001",
+										"index": 3,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "7081f85c-b94d-40fd-8b45-a4f1cac75e46",
+							"name": "IAM Access Key Is Exposed",
+							"shortDescription": {
+								"text": "IAM Access Key Is Exposed"
+							},
+							"fullDescription": {
+								"text": "Check if IAM Access Key is active for some user besides 'root'"
+							},
+							"defaultConfiguration": {
+								"level": "warning"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_access_key",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT001",
+										"index": 3,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "575a2155-6af1-4026-b1af-d5bc8fe2a904",
+							"name": "IAM Policy Grants Full Permissions",
+							"shortDescription": {
+								"text": "IAM Policy Grants Full Permissions"
+							},
+							"fullDescription": {
+								"text": "IAM policies allow all ('*') in a statement action"
+							},
+							"defaultConfiguration": {
+								"level": "warning"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT001",
+										"index": 3,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "c91d7ea0-d4d1-403b-8fe1-c9961ac082c5",
+							"name": "Neptune Cluster With IAM Database Authentication Disabled",
+							"shortDescription": {
+								"text": "Neptune Cluster With IAM Database Authentication Disabled"
+							},
+							"fullDescription": {
+								"text": "Neptune Cluster should have IAM Database Authentication enabled"
+							},
+							"defaultConfiguration": {
+								"level": "warning"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/neptune_cluster#storage_encrypted",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT001",
+										"index": 3,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "98d59056-f745-4ef5-8613-32bca8d40b7e",
+							"name": "Neptune Database Cluster Encryption Disabled",
+							"shortDescription": {
+								"text": "Neptune Database Cluster Encryption Disabled"
+							},
+							"fullDescription": {
+								"text": "Check if Neptune Cluster Storage is securely encrypted"
+							},
+							"defaultConfiguration": {
+								"level": "warning"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/neptune_cluster#storage_encrypted",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT006",
+										"index": 11,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "1dc73fb4-5b51-430c-8c5f-25dcf9090b02",
+							"name": "RDS With Backup Disabled",
+							"shortDescription": {
+								"text": "RDS With Backup Disabled"
+							},
+							"fullDescription": {
+								"text": "RDS configured without backup"
+							},
+							"defaultConfiguration": {
+								"level": "warning"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/db_instance",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT003",
+										"index": 15,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "568a4d22-3517-44a6-a7ad-6a7eed88722c",
+							"name": "S3 Bucket Without Versioning",
+							"shortDescription": {
+								"text": "S3 Bucket Without Versioning"
+							},
+							"fullDescription": {
+								"text": "S3 bucket should have versioning enabled"
+							},
+							"defaultConfiguration": {
+								"level": "warning"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket#versioning",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT010",
+										"index": 5,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "9630336b-3fed-4096-8173-b9afdfe346a7",
+							"name": "Unscanned ECR Image",
+							"shortDescription": {
+								"text": "Unscanned ECR Image"
+							},
+							"fullDescription": {
+								"text": "Checks if the ECR Image has been scanned"
+							},
+							"defaultConfiguration": {
+								"level": "warning"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_repository#scan_on_push",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT006",
+										"index": 11,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "f83121ea-03da-434f-9277-9cd247ab3047",
+							"name": "VPC FlowLogs Disabled",
+							"shortDescription": {
+								"text": "VPC FlowLogs Disabled"
+							},
+							"fullDescription": {
+								"text": "VPC hasn't got any FlowLog associated"
+							},
+							"defaultConfiguration": {
+								"level": "warning"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT010",
+										"index": 5,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "52f04a44-6bfa-4c41-b1d3-4ae99a2de05c",
+							"name": "VPC Subnet Assigns Public IP",
+							"shortDescription": {
+								"text": "VPC Subnet Assigns Public IP"
+							},
+							"fullDescription": {
+								"text": "VPC Subnet should not assign public IP"
+							},
+							"defaultConfiguration": {
+								"level": "warning"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/subnet#map_public_ip_on_launch",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT009",
+										"index": 6,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "fd632aaf-b8a1-424d-a4d1-0de22fd3247a",
+							"name": "VPC Without Network Firewall",
+							"shortDescription": {
+								"text": "VPC Without Network Firewall"
+							},
+							"fullDescription": {
+								"text": "VPC should have a Network Firewall associated"
+							},
+							"defaultConfiguration": {
+								"level": "warning"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/networkfirewall_firewall#vpc_id",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT009",
+										"index": 6,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "0b93729a-d882-4803-bdc3-ac429a21f158",
+							"name": "EC2 Instance Using API Keys",
+							"shortDescription": {
+								"text": "EC2 Instance Using API Keys"
+							},
+							"fullDescription": {
+								"text": "EC2 instances should use roles to be granted access to other AWS services"
+							},
+							"defaultConfiguration": {
+								"level": "note"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance#iam_instance_profile",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT001",
+										"index": 3,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "69e7c320-b65d-41bb-be02-d63ecc0bcc9d",
+							"name": "ECR Repository Without Policy",
+							"shortDescription": {
+								"text": "ECR Repository Without Policy"
+							},
+							"fullDescription": {
+								"text": "ECR Repository should have Policies attached to it"
+							},
+							"defaultConfiguration": {
+								"level": "note"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_repository_policy",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT004",
+										"index": 4,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "37304d3f-f852-40b8-ae3f-725e87a7cedf",
+							"name": "EKS cluster logging is not enabled",
+							"shortDescription": {
+								"text": "EKS cluster logging is not enabled"
+							},
+							"fullDescription": {
+								"text": "Amazon EKS control plane logging is not enabled"
+							},
+							"defaultConfiguration": {
+								"level": "note"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eks_cluster#enabled_cluster_log_types",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT010",
+										"index": 5,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "d7b9d850-3e06-4a75-852f-c46c2e92240b",
+							"name": "Hardcoded AWS Access Key",
+							"shortDescription": {
+								"text": "Hardcoded AWS Access Key"
+							},
+							"fullDescription": {
+								"text": "Hard-coded AWS access key / secret key exists in EC2 user data"
+							},
+							"defaultConfiguration": {
+								"level": "note"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT012",
+										"index": 8,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "b03a748a-542d-44f4-bb86-9199ab4fd2d5",
+							"name": "Healthcheck Instruction Missing",
+							"shortDescription": {
+								"text": "Healthcheck Instruction Missing"
+							},
+							"fullDescription": {
+								"text": "Ensure that HEALTHCHECK is being used. The HEALTHCHECK instruction tells Docker how to test a container to check that it is still working"
+							},
+							"defaultConfiguration": {
+								"level": "note"
+							},
+							"helpUri": "https://docs.docker.com/engine/reference/builder/#healthcheck",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT007",
+										"index": 1,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "b4378389-a9aa-44ee-91e7-ef183f11079e",
+							"name": "IAM Policies Attached To User",
+							"shortDescription": {
+								"text": "IAM Policies Attached To User"
+							},
+							"fullDescription": {
+								"text": "IAM policies should be attached only to groups or roles"
+							},
+							"defaultConfiguration": {
+								"level": "note"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy_attachment",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT004",
+										"index": 4,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "8152e0cf-d2f0-47ad-96d5-d003a76eabd1",
+							"name": "Lambda Functions Without X-Ray Tracing",
+							"shortDescription": {
+								"text": "Lambda Functions Without X-Ray Tracing"
+							},
+							"fullDescription": {
+								"text": "AWS Lambda functions should have TracingConfig enabled. For this, property 'tracing_Config.mode' should have the value 'Active'"
+							},
+							"defaultConfiguration": {
+								"level": "note"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lambda_function#tracing_config",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT010",
+										"index": 5,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "f861041c-8c9f-4156-acfc-5e6e524f5884",
+							"name": "S3 Bucket Logging Disabled",
+							"shortDescription": {
+								"text": "S3 Bucket Logging Disabled"
+							},
+							"fullDescription": {
+								"text": "S3 bucket without logging"
+							},
+							"defaultConfiguration": {
+								"level": "note"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT010",
+										"index": 5,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "23b70e32-032e-4fa6-ba5c-82f56b9980e6",
+							"name": "EC2 Instance Monitoring Disabled",
+							"shortDescription": {
+								"text": "EC2 Instance Monitoring Disabled"
+							},
+							"fullDescription": {
+								"text": "EC2 Instance should have detailed monitoring enabled. With detailed monitoring enabled data is available in 1-minute periods"
+							},
+							"defaultConfiguration": {
+								"level": "none"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance#monitoring",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT010",
+										"index": 5,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "60224630-175a-472a-9e23-133827040766",
+							"name": "EC2 Not EBS Optimized",
+							"shortDescription": {
+								"text": "EC2 Not EBS Optimized"
+							},
+							"fullDescription": {
+								"text": "It's considered a best practice for an EC2 instance to use an EBS optimized instance. This provides the best performance for your EBS volumes by minimizing contention between Amazon EBS I/O and other traffic from your instance"
+							},
+							"defaultConfiguration": {
+								"level": "none"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance#ebs_optimized",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT004",
+										"index": 4,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "20018359-6fd7-4d05-ab26-d4dffccbdf79",
+							"name": "ELB Access Logging Disabled",
+							"shortDescription": {
+								"text": "ELB Access Logging Disabled"
+							},
+							"fullDescription": {
+								"text": "ELB should have logging enabled to help on error investigation"
+							},
+							"defaultConfiguration": {
+								"level": "none"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elb#enabled",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT010",
+										"index": 5,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "1e434b25-8763-4b00-a5ca-ca03b7abbb66",
+							"name": "Name Is Not Snake Case",
+							"shortDescription": {
+								"text": "Name Is Not Snake Case"
+							},
+							"fullDescription": {
+								"text": "All names should follow snake case pattern."
+							},
+							"defaultConfiguration": {
+								"level": "none"
+							},
+							"helpUri": "https://www.terraform.io/docs/extend/best-practices/naming.html#naming",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT004",
+										"index": 4,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "45cff7b6-3b80-40c1-ba7b-2cf480678bb8",
+							"name": "Neptune Logging Is Disabled",
+							"shortDescription": {
+								"text": "Neptune Logging Is Disabled"
+							},
+							"fullDescription": {
+								"text": "Neptune logging should be enabled"
+							},
+							"defaultConfiguration": {
+								"level": "none"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/neptune_cluster#enable_cloudwatch_logs_exports",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT010",
+										"index": 5,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "59312e8a-a64e-41e7-a252-618533dd1ea8",
+							"name": "Output Without Description",
+							"shortDescription": {
+								"text": "Output Without Description"
+							},
+							"fullDescription": {
+								"text": "All outputs should contain a valid description."
+							},
+							"defaultConfiguration": {
+								"level": "none"
+							},
+							"helpUri": "https://www.terraform.io/docs/language/values/outputs.html#description-output-value-documentation",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT004",
+										"index": 4,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "8d7f7b8c-6c7c-40f8-baa6-62006c6c7b56",
+							"name": "RDS Without Logging",
+							"shortDescription": {
+								"text": "RDS Without Logging"
+							},
+							"fullDescription": {
+								"text": "RDS does not have any kind of logger"
+							},
+							"defaultConfiguration": {
+								"level": "none"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/db_instance#enabled_cloudwatch_logs_exports",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT010",
+										"index": 5,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "e38a8e0a-b88b-4902-b3fe-b0fcb17d5c10",
+							"name": "Resource Not Using Tags",
+							"shortDescription": {
+								"text": "Resource Not Using Tags"
+							},
+							"fullDescription": {
+								"text": "AWS services resource tags are an essential part of managing components"
+							},
+							"defaultConfiguration": {
+								"level": "none"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/guides/resource-tagging",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT004",
+										"index": 4,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "68eb4bf3-f9bf-463d-b5cf-e029bb446d2e",
+							"name": "Security Group Rules Without Description",
+							"shortDescription": {
+								"text": "Security Group Rules Without Description"
+							},
+							"fullDescription": {
+								"text": "It's considered a best practice for all rules in AWS Security Group to have a description"
+							},
+							"defaultConfiguration": {
+								"level": "none"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group#description",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT004",
+										"index": 4,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "cb3f5ed6-0d18-40de-a93d-b3538db31e8c",
+							"name": "Security Group Without Description",
+							"shortDescription": {
+								"text": "Security Group Without Description"
+							},
+							"fullDescription": {
+								"text": "It's considered a best practice for AWS Security Group to have a description"
+							},
+							"defaultConfiguration": {
+								"level": "none"
+							},
+							"helpUri": "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group#description",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT004",
+										"index": 4,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "2a153952-2544-4687-bcc9-cc8fea814a9b",
+							"name": "Variable Without Description",
+							"shortDescription": {
+								"text": "Variable Without Description"
+							},
+							"fullDescription": {
+								"text": "All variables should contain a valid description."
+							},
+							"defaultConfiguration": {
+								"level": "none"
+							},
+							"helpUri": "https://www.terraform.io/docs/language/values/variables.html#input-variable-documentation",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT004",
+										"index": 4,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": "fc5109bf-01fd-49fb-8bde-4492b543c34a",
+							"name": "Variable Without Type",
+							"shortDescription": {
+								"text": "Variable Without Type"
+							},
+							"fullDescription": {
+								"text": "All variables should contain a valid type."
+							},
+							"defaultConfiguration": {
+								"level": "none"
+							},
+							"helpUri": "https://www.terraform.io/docs/language/values/variables.html#input-variable-documentation",
+							"relationships": [
+								{
+									"target": {
+										"id": "CAT004",
+										"index": 4,
+										"toolComponent": {
+											"name": "Categories",
+											"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+											"index": 0
+										}
+									}
+								}
+							]
+						}
+					]
+				}
+			},
+			"results": [
+				{
+					"ruleId": "3ddfa124-6407-4845-a501-179f90c65097",
+					"ruleIndex": 0,
+					"kind": "fail",
+					"message": {
+						"text": "The attribute(s) 'policy.Statement.Condition' or/and 'policy.Statement.Condition.BoolIfExists' or/and 'policy.Statement.Condition.BoolIfExists.aws:MultiFactorAuthPresent' is/are undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\iam.tf"
+								},
+								"region": {
+									"startLine": 29
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "22fbfeac-7b5a-421a-8a27-7a2178bb910b",
+					"ruleIndex": 1,
+					"kind": "fail",
+					"message": {
+						"text": "aws_kms_key[logs_key].enable_key_rotation is undefined"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\kms.tf"
+								},
+								"region": {
+									"startLine": 1
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "35113e6f-2c6b-414d-beec-7a9482d3b2d1",
+					"ruleIndex": 2,
+					"kind": "fail",
+					"message": {
+						"text": "'publicly_accessible' is set to true"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\db-app.tf"
+								},
+								"region": {
+									"startLine": 21
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "08bd0760-8752-44e1-9779-7bb369b2b4e4",
+					"ruleIndex": 3,
+					"kind": "fail",
+					"message": {
+						"text": "'storage_encrypted' is set to false"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\db-app.tf"
+								},
+								"region": {
+									"startLine": 18
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "e6b4b943-6883-47a9-9739-7ada9568f8ca",
+					"ruleIndex": 4,
+					"kind": "fail",
+					"message": {
+						"text": "'aws_ebs_volume[web_host_storage].encrypted' associated with aws_ebs_snapshot[example_snapshot] is undefined"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\ec2.tf"
+								},
+								"region": {
+									"startLine": 53
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "5a2486aa-facf-477d-a5c1-b010789459ce",
+					"ruleIndex": 5,
+					"kind": "fail",
+					"message": {
+						"text": "'associate_public_ip_address' is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\db-app.tf"
+								},
+								"region": {
+									"startLine": 242
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "5a2486aa-facf-477d-a5c1-b010789459ce",
+					"ruleIndex": 5,
+					"kind": "fail",
+					"message": {
+						"text": "'associate_public_ip_address' is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\ec2.tf"
+								},
+								"region": {
+									"startLine": 1
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "63ebcb19-2739-4d3f-aa5c-e8bbb9b85281",
+					"ruleIndex": 6,
+					"kind": "fail",
+					"message": {
+						"text": "'encryption_config' is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\eks.tf"
+								},
+								"region": {
+									"startLine": 117
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "ffac8a12-322e-42c1-b9b9-81ff85c39ef7",
+					"ruleIndex": 7,
+					"kind": "fail",
+					"message": {
+						"text": "aws_security_group.ingress opens the HTTP port (80)"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\ec2.tf"
+								},
+								"region": {
+									"startLine": 77
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "88fd05e0-ac0e-43d2-ba6d-fc0ba60ae1a6",
+					"ruleIndex": 8,
+					"kind": "fail",
+					"message": {
+						"text": "'iam_database_authentication_enabled' is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\db-app.tf"
+								},
+								"region": {
+									"startLine": 1
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "fd54f200-402c-4333-a5a4-36ef6709af2f",
+					"ruleIndex": 9,
+					"kind": "fail",
+					"message": {
+						"text": "The 'Dockerfile' does not contain any 'USER' instruction"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\resources\\Dockerfile"
+								},
+								"region": {
+									"startLine": 1
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "76c0bcde-903d-456e-ac13-e58c34987852",
+					"ruleIndex": 10,
+					"kind": "fail",
+					"message": {
+						"text": "'      access_key = \"AKIAIOSFODNN7EXAMPLE\"' contains a secret"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\lambda.tf"
+								},
+								"region": {
+									"startLine": 44
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "76c0bcde-903d-456e-ac13-e58c34987852",
+					"ruleIndex": 10,
+					"kind": "fail",
+					"message": {
+						"text": "'  access_key = \"AKIAIOSFODNN7EXAMPLE\"' contains a secret"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\providers.tf"
+								},
+								"region": {
+									"startLine": 10
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "76c0bcde-903d-456e-ac13-e58c34987852",
+					"ruleIndex": 10,
+					"kind": "fail",
+					"message": {
+						"text": "'export AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMAAA' contains a secret"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\ec2.tf"
+								},
+								"region": {
+									"startLine": 15
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "83ab47ff-381d-48cd-bac5-fb32222f54af",
+					"ruleIndex": 11,
+					"kind": "fail",
+					"message": {
+						"text": "'export AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMAAAKEY' contains a secret"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\ec2.tf"
+								},
+								"region": {
+									"startLine": 16
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "3e2d3b2f-c22a-4df1-9cc6-a7a0aebb0c99",
+					"ruleIndex": 12,
+					"kind": "fail",
+					"message": {
+						"text": "'  secret_key = \"wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY\"' contains a secret"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\providers.tf"
+								},
+								"region": {
+									"startLine": 11
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "3e2d3b2f-c22a-4df1-9cc6-a7a0aebb0c99",
+					"ruleIndex": 12,
+					"kind": "fail",
+					"message": {
+						"text": "'      secret_key = \"wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY\"' contains a secret"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\lambda.tf"
+								},
+								"region": {
+									"startLine": 45
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "38c5ee0d-7f22-4260-ab72-5073048df100",
+					"ruleIndex": 13,
+					"kind": "fail",
+					"message": {
+						"text": "'acl' is equal 'public-read'"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\s3.tf"
+								},
+								"region": {
+									"startLine": 7
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "5fb49a69-8d46-4495-a2f8-9c8c622b2b6e",
+					"ruleIndex": 14,
+					"kind": "fail",
+					"message": {
+						"text": "aws_s3_bucket_object.server_side_encryption is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\s3.tf"
+								},
+								"region": {
+									"startLine": 24
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "6726dcc0-5ff5-459d-b473-a780bef7665c",
+					"ruleIndex": 15,
+					"kind": "fail",
+					"message": {
+						"text": "'server_side_encryption_configuration' is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\s3.tf"
+								},
+								"region": {
+									"startLine": 91
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "6726dcc0-5ff5-459d-b473-a780bef7665c",
+					"ruleIndex": 15,
+					"kind": "fail",
+					"message": {
+						"text": "'server_side_encryption_configuration' is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\s3.tf"
+								},
+								"region": {
+									"startLine": 66
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "6726dcc0-5ff5-459d-b473-a780bef7665c",
+					"ruleIndex": 15,
+					"kind": "fail",
+					"message": {
+						"text": "'server_side_encryption_configuration' is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\ec2.tf"
+								},
+								"region": {
+									"startLine": 271
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "6726dcc0-5ff5-459d-b473-a780bef7665c",
+					"ruleIndex": 15,
+					"kind": "fail",
+					"message": {
+						"text": "'server_side_encryption_configuration' is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\s3.tf"
+								},
+								"region": {
+									"startLine": 43
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "6726dcc0-5ff5-459d-b473-a780bef7665c",
+					"ruleIndex": 15,
+					"kind": "fail",
+					"message": {
+						"text": "'server_side_encryption_configuration' is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\s3.tf"
+								},
+								"region": {
+									"startLine": 1
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "c5b31ab9-0f26-4a49-b8aa-4cc064392f4d",
+					"ruleIndex": 16,
+					"kind": "fail",
+					"message": {
+						"text": "'mfa_delete' is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\s3.tf"
+								},
+								"region": {
+									"startLine": 71
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "c5b31ab9-0f26-4a49-b8aa-4cc064392f4d",
+					"ruleIndex": 16,
+					"kind": "fail",
+					"message": {
+						"text": "aws_s3_bucket[flowbucket].versioning is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\ec2.tf"
+								},
+								"region": {
+									"startLine": 271
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "c5b31ab9-0f26-4a49-b8aa-4cc064392f4d",
+					"ruleIndex": 16,
+					"kind": "fail",
+					"message": {
+						"text": "aws_s3_bucket[financials].versioning is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\s3.tf"
+								},
+								"region": {
+									"startLine": 43
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "c5b31ab9-0f26-4a49-b8aa-4cc064392f4d",
+					"ruleIndex": 16,
+					"kind": "fail",
+					"message": {
+						"text": "aws_s3_bucket[data].versioning is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\s3.tf"
+								},
+								"region": {
+									"startLine": 1
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "c5b31ab9-0f26-4a49-b8aa-4cc064392f4d",
+					"ruleIndex": 16,
+					"kind": "fail",
+					"message": {
+						"text": "'mfa_delete' is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\s3.tf"
+								},
+								"region": {
+									"startLine": 95
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "c5b31ab9-0f26-4a49-b8aa-4cc064392f4d",
+					"ruleIndex": 16,
+					"kind": "fail",
+					"message": {
+						"text": "'mfa_delete' is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\s3.tf"
+								},
+								"region": {
+									"startLine": 118
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "65905cec-d691-4320-b320-2000436cb696",
+					"ruleIndex": 17,
+					"kind": "fail",
+					"message": {
+						"text": "aws_security_group[web-node] 'SSH' (Port:22) is public"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\ec2.tf"
+								},
+								"region": {
+									"startLine": 87
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "590d878b-abdc-428f-895a-e2b68a0e1998",
+					"ruleIndex": 18,
+					"kind": "fail",
+					"message": {
+						"text": "aws_security_group[web-node].ingress.from_port is unknown and is exposed to the entire Internet"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\ec2.tf"
+								},
+								"region": {
+									"startLine": 87
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "4728cd65-a20c-49da-8b31-9c08b423e4db",
+					"ruleIndex": 19,
+					"kind": "fail",
+					"message": {
+						"text": "One of 'ingress.cidr_blocks' equal '0.0.0.0/0'"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\ec2.tf"
+								},
+								"region": {
+									"startLine": 88
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "4728cd65-a20c-49da-8b31-9c08b423e4db",
+					"ruleIndex": 19,
+					"kind": "fail",
+					"message": {
+						"text": "One of 'ingress.cidr_blocks' equal '0.0.0.0/0'"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\ec2.tf"
+								},
+								"region": {
+									"startLine": 95
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "cc997676-481b-4e93-aa81-d19f8c5e9b12",
+					"ruleIndex": 20,
+					"kind": "fail",
+					"message": {
+						"text": "One of 'aws_ebs_volume.encrypted' is undefined"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\ec2.tf"
+								},
+								"region": {
+									"startLine": 34
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "d1846b12-20c5-4d45-8798-fc35b79268eb",
+					"ruleIndex": 21,
+					"kind": "fail",
+					"message": {
+						"text": "aws_ecr_repository.repository.image_tag_mutability is 'MUTABLE'"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\ecr.tf"
+								},
+								"region": {
+									"startLine": 3
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "0e32d561-4b5a-4664-a6e3-a3fa85649157",
+					"ruleIndex": 22,
+					"kind": "fail",
+					"message": {
+						"text": "The attribute 'encryption_configuration' is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\ecr.tf"
+								},
+								"region": {
+									"startLine": 1
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "24e16922-4330-4e9d-be8a-caa90299466a",
+					"ruleIndex": 23,
+					"kind": "fail",
+					"message": {
+						"text": "'encrypt_at_rest' is undefined"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\es.tf"
+								},
+								"region": {
+									"startLine": 1
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "967eb3e6-26fc-497d-8895-6428beb6e8e2",
+					"ruleIndex": 24,
+					"kind": "fail",
+					"message": {
+						"text": "The attribute 'node_to_node_encryption' is undefined"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\es.tf"
+								},
+								"region": {
+									"startLine": 1
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "acb6b4e2-a086-4f35-aefd-4db6ea51ada2",
+					"ruleIndex": 25,
+					"kind": "fail",
+					"message": {
+						"text": "'log_publishing_options' is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\es.tf"
+								},
+								"region": {
+									"startLine": 1
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "e592a0c5-5bdb-414c-9066-5dba7cdea370",
+					"ruleIndex": 26,
+					"kind": "fail",
+					"message": {
+						"text": "'aws_accessanalyzer_analyzer' is undefined"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\db-app.tf"
+								},
+								"region": {
+									"startLine": 1
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "7081f85c-b94d-40fd-8b45-a4f1cac75e46",
+					"ruleIndex": 27,
+					"kind": "fail",
+					"message": {
+						"text": "'aws_iam_access_key[user].user' is '${aws_iam_user.user.name}' for an active access key"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\iam.tf"
+								},
+								"region": {
+									"startLine": 21
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "575a2155-6af1-4026-b1af-d5bc8fe2a904",
+					"ruleIndex": 28,
+					"kind": "fail",
+					"message": {
+						"text": "'policy.Statement.Resource' equal '*'"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\db-app.tf"
+								},
+								"region": {
+									"startLine": 209
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "575a2155-6af1-4026-b1af-d5bc8fe2a904",
+					"ruleIndex": 28,
+					"kind": "fail",
+					"message": {
+						"text": "'policy.Statement.Resource' equal '*'"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\iam.tf"
+								},
+								"region": {
+									"startLine": 29
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "c91d7ea0-d4d1-403b-8fe1-c9961ac082c5",
+					"ruleIndex": 29,
+					"kind": "fail",
+					"message": {
+						"text": "'iam_database_authentication_enabled' is set to false"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\neptune.tf"
+								},
+								"region": {
+									"startLine": 7
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "98d59056-f745-4ef5-8613-32bca8d40b7e",
+					"ruleIndex": 30,
+					"kind": "fail",
+					"message": {
+						"text": "'storage_encrypted' is false"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\neptune.tf"
+								},
+								"region": {
+									"startLine": 9
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "1dc73fb4-5b51-430c-8c5f-25dcf9090b02",
+					"ruleIndex": 31,
+					"kind": "fail",
+					"message": {
+						"text": "'backup_retention_period' is equal '0'"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\db-app.tf"
+								},
+								"region": {
+									"startLine": 17
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "568a4d22-3517-44a6-a7ad-6a7eed88722c",
+					"ruleIndex": 32,
+					"kind": "fail",
+					"message": {
+						"text": "'versioning' is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\ec2.tf"
+								},
+								"region": {
+									"startLine": 271
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "568a4d22-3517-44a6-a7ad-6a7eed88722c",
+					"ruleIndex": 32,
+					"kind": "fail",
+					"message": {
+						"text": "'versioning' is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\s3.tf"
+								},
+								"region": {
+									"startLine": 43
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "568a4d22-3517-44a6-a7ad-6a7eed88722c",
+					"ruleIndex": 32,
+					"kind": "fail",
+					"message": {
+						"text": "'versioning' is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\s3.tf"
+								},
+								"region": {
+									"startLine": 1
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "9630336b-3fed-4096-8173-b9afdfe346a7",
+					"ruleIndex": 33,
+					"kind": "fail",
+					"message": {
+						"text": "aws_ecr_repository[repository].image_scanning_configuration is undefined"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\ecr.tf"
+								},
+								"region": {
+									"startLine": 1
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "f83121ea-03da-434f-9277-9cd247ab3047",
+					"ruleIndex": 34,
+					"kind": "fail",
+					"message": {
+						"text": "aws_vpc[eks_vpc] is not the same as Flow Logs VPC id"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\eks.tf"
+								},
+								"region": {
+									"startLine": 43
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "52f04a44-6bfa-4c41-b1d3-4ae99a2de05c",
+					"ruleIndex": 35,
+					"kind": "fail",
+					"message": {
+						"text": "aws_subnet[web_subnet].map_public_ip_on_launch is set to true"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\ec2.tf"
+								},
+								"region": {
+									"startLine": 139
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "52f04a44-6bfa-4c41-b1d3-4ae99a2de05c",
+					"ruleIndex": 35,
+					"kind": "fail",
+					"message": {
+						"text": "aws_subnet[eks_subnet2].map_public_ip_on_launch is set to true"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\eks.tf"
+								},
+								"region": {
+									"startLine": 93
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "52f04a44-6bfa-4c41-b1d3-4ae99a2de05c",
+					"ruleIndex": 35,
+					"kind": "fail",
+					"message": {
+						"text": "aws_subnet[eks_subnet1].map_public_ip_on_launch is set to true"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\eks.tf"
+								},
+								"region": {
+									"startLine": 65
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "52f04a44-6bfa-4c41-b1d3-4ae99a2de05c",
+					"ruleIndex": 35,
+					"kind": "fail",
+					"message": {
+						"text": "aws_subnet[web_subnet2].map_public_ip_on_launch is set to true"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\ec2.tf"
+								},
+								"region": {
+									"startLine": 159
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "fd632aaf-b8a1-424d-a4d1-0de22fd3247a",
+					"ruleIndex": 36,
+					"kind": "fail",
+					"message": {
+						"text": "aws_vpc[web_vpc] does not have an 'aws_networkfirewall_firewall' associated"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\ec2.tf"
+								},
+								"region": {
+									"startLine": 117
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "fd632aaf-b8a1-424d-a4d1-0de22fd3247a",
+					"ruleIndex": 36,
+					"kind": "fail",
+					"message": {
+						"text": "aws_vpc[eks_vpc] does not have an 'aws_networkfirewall_firewall' associated"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\eks.tf"
+								},
+								"region": {
+									"startLine": 43
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "0b93729a-d882-4803-bdc3-ac429a21f158",
+					"ruleIndex": 37,
+					"kind": "fail",
+					"message": {
+						"text": "aws_instance[web_host].user_data is being used to configure AWS API keys"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\ec2.tf"
+								},
+								"region": {
+									"startLine": 1
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "0b93729a-d882-4803-bdc3-ac429a21f158",
+					"ruleIndex": 37,
+					"kind": "fail",
+					"message": {
+						"text": "aws_instance[db_app].user_data is being used to configure AWS API keys"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\db-app.tf"
+								},
+								"region": {
+									"startLine": 242
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "69e7c320-b65d-41bb-be02-d63ecc0bcc9d",
+					"ruleIndex": 38,
+					"kind": "fail",
+					"message": {
+						"text": "aws_ecr_repository[repository] doesn't have policies attached"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\ecr.tf"
+								},
+								"region": {
+									"startLine": 1
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "37304d3f-f852-40b8-ae3f-725e87a7cedf",
+					"ruleIndex": 39,
+					"kind": "fail",
+					"message": {
+						"text": "'enabled_cluster_log_types' is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\eks.tf"
+								},
+								"region": {
+									"startLine": 117
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "d7b9d850-3e06-4a75-852f-c46c2e92240b",
+					"ruleIndex": 40,
+					"kind": "fail",
+					"message": {
+						"text": "'user_data' contains hardcoded access key"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\ec2.tf"
+								},
+								"region": {
+									"startLine": 9
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "b03a748a-542d-44f4-bb86-9199ab4fd2d5",
+					"ruleIndex": 41,
+					"kind": "fail",
+					"message": {
+						"text": "Dockerfile doesn't contain instruction 'HEALTHCHECK'"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\resources\\Dockerfile"
+								},
+								"region": {
+									"startLine": 1
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "b4378389-a9aa-44ee-91e7-ef183f11079e",
+					"ruleIndex": 42,
+					"kind": "fail",
+					"message": {
+						"text": "'user' exists"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\iam.tf"
+								},
+								"region": {
+									"startLine": 27
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "8152e0cf-d2f0-47ad-96d5-d003a76eabd1",
+					"ruleIndex": 43,
+					"kind": "fail",
+					"message": {
+						"text": "aws_lambda_function[analysis_lambda].tracing_config is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\lambda.tf"
+								},
+								"region": {
+									"startLine": 31
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "f861041c-8c9f-4156-acfc-5e6e524f5884",
+					"ruleIndex": 44,
+					"kind": "fail",
+					"message": {
+						"text": "'logging' is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\s3.tf"
+								},
+								"region": {
+									"startLine": 66
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "f861041c-8c9f-4156-acfc-5e6e524f5884",
+					"ruleIndex": 44,
+					"kind": "fail",
+					"message": {
+						"text": "'logging' is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\ec2.tf"
+								},
+								"region": {
+									"startLine": 271
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "f861041c-8c9f-4156-acfc-5e6e524f5884",
+					"ruleIndex": 44,
+					"kind": "fail",
+					"message": {
+						"text": "'logging' is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\s3.tf"
+								},
+								"region": {
+									"startLine": 115
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "f861041c-8c9f-4156-acfc-5e6e524f5884",
+					"ruleIndex": 44,
+					"kind": "fail",
+					"message": {
+						"text": "'logging' is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\s3.tf"
+								},
+								"region": {
+									"startLine": 43
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "f861041c-8c9f-4156-acfc-5e6e524f5884",
+					"ruleIndex": 44,
+					"kind": "fail",
+					"message": {
+						"text": "'logging' is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\s3.tf"
+								},
+								"region": {
+									"startLine": 1
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "23b70e32-032e-4fa6-ba5c-82f56b9980e6",
+					"ruleIndex": 45,
+					"kind": "informational",
+					"message": {
+						"text": "'monitoring' is undefined or null%!(EXTRA string=web_host)"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\ec2.tf"
+								},
+								"region": {
+									"startLine": 1
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "23b70e32-032e-4fa6-ba5c-82f56b9980e6",
+					"ruleIndex": 45,
+					"kind": "informational",
+					"message": {
+						"text": "'monitoring' is undefined or null%!(EXTRA string=db_app)"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\db-app.tf"
+								},
+								"region": {
+									"startLine": 242
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "60224630-175a-472a-9e23-133827040766",
+					"ruleIndex": 46,
+					"kind": "informational",
+					"message": {
+						"text": "'ebs_optimized' is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\ec2.tf"
+								},
+								"region": {
+									"startLine": 1
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "60224630-175a-472a-9e23-133827040766",
+					"ruleIndex": 46,
+					"kind": "informational",
+					"message": {
+						"text": "'ebs_optimized' is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\db-app.tf"
+								},
+								"region": {
+									"startLine": 242
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "20018359-6fd7-4d05-ab26-d4dffccbdf79",
+					"ruleIndex": 47,
+					"kind": "informational",
+					"message": {
+						"text": "'aws_elb[{{weblb}}].access_logs' is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\elb.tf"
+								},
+								"region": {
+									"startLine": 2
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "1e434b25-8763-4b00-a5ca-ca03b7abbb66",
+					"ruleIndex": 48,
+					"kind": "informational",
+					"message": {
+						"text": "'policy_attachment-AmazonEKSClusterPolicy' is not in snake case"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\eks.tf"
+								},
+								"region": {
+									"startLine": 33
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "1e434b25-8763-4b00-a5ca-ca03b7abbb66",
+					"ruleIndex": 48,
+					"kind": "informational",
+					"message": {
+						"text": "'web-node' is not in snake case"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\ec2.tf"
+								},
+								"region": {
+									"startLine": 77
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "1e434b25-8763-4b00-a5ca-ca03b7abbb66",
+					"ruleIndex": 48,
+					"kind": "informational",
+					"message": {
+						"text": "'monitoring-framework-policy' is not in snake case"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\es.tf"
+								},
+								"region": {
+									"startLine": 40
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "1e434b25-8763-4b00-a5ca-ca03b7abbb66",
+					"ruleIndex": 48,
+					"kind": "informational",
+					"message": {
+						"text": "'web-eni' is not in snake case"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\ec2.tf"
+								},
+								"region": {
+									"startLine": 231
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "1e434b25-8763-4b00-a5ca-ca03b7abbb66",
+					"ruleIndex": 48,
+					"kind": "informational",
+					"message": {
+						"text": "'monitoring-framework' is not in snake case"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\es.tf"
+								},
+								"region": {
+									"startLine": 1
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "1e434b25-8763-4b00-a5ca-ca03b7abbb66",
+					"ruleIndex": 48,
+					"kind": "informational",
+					"message": {
+						"text": "'policy_attachment-AmazonEKSServicePolicy' is not in snake case"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\eks.tf"
+								},
+								"region": {
+									"startLine": 38
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "45cff7b6-3b80-40c1-ba7b-2cf480678bb8",
+					"ruleIndex": 49,
+					"kind": "informational",
+					"message": {
+						"text": "aws_neptune_cluster.enable_cloudwatch_logs_exports is undefined"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\neptune.tf"
+								},
+								"region": {
+									"startLine": 1
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "59312e8a-a64e-41e7-a252-618533dd1ea8",
+					"ruleIndex": 50,
+					"kind": "informational",
+					"message": {
+						"text": "'description' is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\eks.tf"
+								},
+								"region": {
+									"startLine": 142
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "59312e8a-a64e-41e7-a252-618533dd1ea8",
+					"ruleIndex": 50,
+					"kind": "informational",
+					"message": {
+						"text": "'description' is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\iam.tf"
+								},
+								"region": {
+									"startLine": 48
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "59312e8a-a64e-41e7-a252-618533dd1ea8",
+					"ruleIndex": 50,
+					"kind": "informational",
+					"message": {
+						"text": "'description' is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\iam.tf"
+								},
+								"region": {
+									"startLine": 52
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "59312e8a-a64e-41e7-a252-618533dd1ea8",
+					"ruleIndex": 50,
+					"kind": "informational",
+					"message": {
+						"text": "'description' is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\eks.tf"
+								},
+								"region": {
+									"startLine": 146
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "8d7f7b8c-6c7c-40f8-baa6-62006c6c7b56",
+					"ruleIndex": 51,
+					"kind": "informational",
+					"message": {
+						"text": "'enabled_cloudwatch_logs_exports' is undefined"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\db-app.tf"
+								},
+								"region": {
+									"startLine": 1
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "e38a8e0a-b88b-4902-b3fe-b0fcb17d5c10",
+					"ruleIndex": 52,
+					"kind": "informational",
+					"message": {
+						"text": "aws_subnet[{{eks_subnet2}}].tags has no tags defined"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\eks.tf"
+								},
+								"region": {
+									"startLine": 94
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "e38a8e0a-b88b-4902-b3fe-b0fcb17d5c10",
+					"ruleIndex": 52,
+					"kind": "informational",
+					"message": {
+						"text": "aws_subnet[{{eks_subnet1}}].tags has no tags defined"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\eks.tf"
+								},
+								"region": {
+									"startLine": 66
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "68eb4bf3-f9bf-463d-b5cf-e029bb446d2e",
+					"ruleIndex": 53,
+					"kind": "informational",
+					"message": {
+						"text": "aws_security_group[{{web-node}}].egress description is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\ec2.tf"
+								},
+								"region": {
+									"startLine": 97
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "68eb4bf3-f9bf-463d-b5cf-e029bb446d2e",
+					"ruleIndex": 53,
+					"kind": "informational",
+					"message": {
+						"text": "aws_security_group[{{web-node}}].ingress description is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\ec2.tf"
+								},
+								"region": {
+									"startLine": 90
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "68eb4bf3-f9bf-463d-b5cf-e029bb446d2e",
+					"ruleIndex": 53,
+					"kind": "informational",
+					"message": {
+						"text": "aws_security_group[{{web-node}}].ingress description is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\ec2.tf"
+								},
+								"region": {
+									"startLine": 83
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "cb3f5ed6-0d18-40de-a93d-b3538db31e8c",
+					"ruleIndex": 54,
+					"kind": "informational",
+					"message": {
+						"text": "aws_security_group[{{default}}] description is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\db-app.tf"
+								},
+								"region": {
+									"startLine": 116
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "2a153952-2544-4687-bcc9-cc8fea814a9b",
+					"ruleIndex": 55,
+					"kind": "informational",
+					"message": {
+						"text": "'description' is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\consts.tf"
+								},
+								"region": {
+									"startLine": 28
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "2a153952-2544-4687-bcc9-cc8fea814a9b",
+					"ruleIndex": 55,
+					"kind": "informational",
+					"message": {
+						"text": "'description' is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\consts.tf"
+								},
+								"region": {
+									"startLine": 24
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "2a153952-2544-4687-bcc9-cc8fea814a9b",
+					"ruleIndex": 55,
+					"kind": "informational",
+					"message": {
+						"text": "'description' is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\consts.tf"
+								},
+								"region": {
+									"startLine": 20
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "2a153952-2544-4687-bcc9-cc8fea814a9b",
+					"ruleIndex": 55,
+					"kind": "informational",
+					"message": {
+						"text": "'description' is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\consts.tf"
+								},
+								"region": {
+									"startLine": 4
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "2a153952-2544-4687-bcc9-cc8fea814a9b",
+					"ruleIndex": 55,
+					"kind": "informational",
+					"message": {
+						"text": "'description' is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\consts.tf"
+								},
+								"region": {
+									"startLine": 8
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "fc5109bf-01fd-49fb-8bde-4492b543c34a",
+					"ruleIndex": 56,
+					"kind": "informational",
+					"message": {
+						"text": "'type' is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\consts.tf"
+								},
+								"region": {
+									"startLine": 24
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "fc5109bf-01fd-49fb-8bde-4492b543c34a",
+					"ruleIndex": 56,
+					"kind": "informational",
+					"message": {
+						"text": "'type' is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\consts.tf"
+								},
+								"region": {
+									"startLine": 4
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "fc5109bf-01fd-49fb-8bde-4492b543c34a",
+					"ruleIndex": 56,
+					"kind": "informational",
+					"message": {
+						"text": "'type' is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\consts.tf"
+								},
+								"region": {
+									"startLine": 20
+								}
+							}
+						}
+					]
+				},
+				{
+					"ruleId": "fc5109bf-01fd-49fb-8bde-4492b543c34a",
+					"ruleIndex": 56,
+					"kind": "informational",
+					"message": {
+						"text": "'type' is undefined or null"
+					},
+					"locations": [
+						{
+							"physicalLocation": {
+								"artifactLocation": {
+									"uri": "..\\..\\..\\GitHub\\kics-iac-scan\\deployments\\terraform\\consts.tf"
+								},
+								"region": {
+									"startLine": 8
+								}
+							}
+						}
+					]
+				}
+			],
+			"taxonomies": [
+				{
+					"guid": "58cdcc6f-fe41-4724-bfb3-131a93df4c3f",
+					"name": "Categories",
+					"fullDescription": {
+						"text": "This taxonomy contains the types an issue can assume"
+					},
+					"shortDescription": {
+						"text": "Vulnerabilities categories"
+					},
+					"taxa": [
+						{
+							"id": "CAT000",
+							"name": "Undefined Category",
+							"shortDescription": {
+								"text": "Category is not defined"
+							},
+							"fullDescription": {
+								"text": "Category is not defined"
+							}
+						},
+						{
+							"id": "CAT007",
+							"name": "Insecure Configurations",
+							"shortDescription": {
+								"text": "Configurations which expose the application unnecessarily"
+							},
+							"fullDescription": {
+								"text": "Configurations which expose the application unnecessarily"
+							}
+						},
+						{
+							"id": "CAT008",
+							"name": "Insecure Defaults",
+							"shortDescription": {
+								"text": "Configurations that are insecure by default"
+							},
+							"fullDescription": {
+								"text": "Configurations that are insecure by default"
+							}
+						},
+						{
+							"id": "CAT001",
+							"name": "Access Control",
+							"shortDescription": {
+								"text": "Service permission and identity management"
+							},
+							"fullDescription": {
+								"text": "Service permission and identity management"
+							}
+						},
+						{
+							"id": "CAT004",
+							"name": "Best Practices",
+							"shortDescription": {
+								"text": "Metadata management"
+							},
+							"fullDescription": {
+								"text": "Metadata management"
+							}
+						},
+						{
+							"id": "CAT010",
+							"name": "Observability",
+							"shortDescription": {
+								"text": "Logging and Monitoring"
+							},
+							"fullDescription": {
+								"text": "Logging and Monitoring"
+							}
+						},
+						{
+							"id": "CAT009",
+							"name": "Networking and Firewall",
+							"shortDescription": {
+								"text": "Network port exposure and firewall configuration"
+							},
+							"fullDescription": {
+								"text": "Network port exposure and firewall configuration"
+							}
+						},
+						{
+							"id": "CAT011",
+							"name": "Resource Management",
+							"shortDescription": {
+								"text": "Resource and privilege limit configuration"
+							},
+							"fullDescription": {
+								"text": "Resource and privilege limit configuration"
+							}
+						},
+						{
+							"id": "CAT012",
+							"name": "Secret Management",
+							"shortDescription": {
+								"text": "Secret and Key management"
+							},
+							"fullDescription": {
+								"text": "Secret and Key management"
+							}
+						},
+						{
+							"id": "CAT014",
+							"name": "Structure and Semantics",
+							"shortDescription": {
+								"text": "Malformed document structure or inadequate semantics"
+							},
+							"fullDescription": {
+								"text": "Malformed document structure or inadequate semantics"
+							}
+						},
+						{
+							"id": "CAT005",
+							"name": "Build Process",
+							"shortDescription": {
+								"text": "Insecure configurations when building/deploying"
+							},
+							"fullDescription": {
+								"text": "Insecure configurations when building/deploying"
+							}
+						},
+						{
+							"id": "CAT006",
+							"name": "Encryption",
+							"shortDescription": {
+								"text": "Data Security and Encryption configuration"
+							},
+							"fullDescription": {
+								"text": "Data Security and Encryption configuration"
+							}
+						},
+						{
+							"id": "CAT013",
+							"name": "Supply-Chain",
+							"shortDescription": {
+								"text": "Dependency version management"
+							},
+							"fullDescription": {
+								"text": "Dependency version management"
+							}
+						},
+						{
+							"id": "CAT015",
+							"name": "Bill Of Materials",
+							"shortDescription": {
+								"text": "List of resources provisioned"
+							},
+							"fullDescription": {
+								"text": "List of resources provisioned"
+							}
+						},
+						{
+							"id": "CAT002",
+							"name": "Availability",
+							"shortDescription": {
+								"text": "Reliability and Scalability"
+							},
+							"fullDescription": {
+								"text": "Reliability and Scalability"
+							}
+						},
+						{
+							"id": "CAT003",
+							"name": "Backup",
+							"shortDescription": {
+								"text": "Survivability and Recovery"
+							},
+							"fullDescription": {
+								"text": "Survivability and Recovery"
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}
