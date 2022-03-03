@@ -10,17 +10,15 @@ jobs:
   kics-job:
     runs-on: ubuntu-latest
     name: kics-action
+    permissions:
+      security-events: write
+      actions: read
+      contents: read
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Mkdir results-dir
-        run: mkdir -p results-dir
-      - name: run KICS Scan
-        uses: Checkmarx/kics-github-action@v1.4
+      - name: Upload SARIF file
+        if: success() || failure()
+        uses: github/codeql-action/upload-sarif@v1
         with:
-          path: './deployments/terraform'
-          output_path: results-dir
-          platform_type: terraform
-          output_formats: 'json,sarif,html'
-          fail_on: high
-          enable_comments: true
+          sarif_file: results.sarif
