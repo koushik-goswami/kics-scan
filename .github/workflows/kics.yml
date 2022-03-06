@@ -29,12 +29,14 @@ jobs:
           fail_on: high
           enable_comments: true
       - name: checkout sarif update action
+        if: success() || failure()
         uses: actions/checkout@v2
         with:
           repository: koushik-goswami/update-sarif-action
           path: ./.github/actions/update-sarif-action
           ref: main
       - name: format sarif
+        if: success() || failure()
         uses: ./.github/actions/update-sarif-action
         with:
           sarif_path: ./results-dir/results.sarif
