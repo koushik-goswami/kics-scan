@@ -52,7 +52,7 @@ jobs:
         with:
           name: kics-result
           path: |
-            results-dir/results.html
+            results-dir/results.sarif
       - name: Upload SARIF file
         if: success() || failure()
         uses: github/codeql-action/upload-sarif@v1
