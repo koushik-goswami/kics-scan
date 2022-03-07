@@ -37,7 +37,9 @@ jobs:
           ref: main
       - name: change permission
         if: success() || failure()
-        run: chmod +x ./.github/actions/update-sarif-action
+        run: |
+          chmod +x ./.github/actions/update-sarif-action
+          chmod +x ./results-dir/results.sarif
       - name: format sarif
         if: success() || failure()
         uses: ./.github/actions/update-sarif-action
