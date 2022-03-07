@@ -39,7 +39,7 @@ jobs:
         if: success() || failure()
         run: |
           chmod +x ./.github/actions/update-sarif-action
-          chmod +x ./results-dir/results.sarif
+          ls -la ./.github/actions/update-sarif-action
       - name: format sarif
         if: success() || failure()
         uses: ./.github/actions/update-sarif-action
