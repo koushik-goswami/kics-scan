@@ -39,7 +39,7 @@ jobs:
         if: success() || failure()
         run: |
           chmod -R +x ./.github/actions/update-sarif-action
-          chown runner ./results-dir/results.sarif
+          sudo chown runner ./results-dir/results.sarif
       - name: format sarif
         if: success() || failure()
         uses: ./.github/actions/update-sarif-action
